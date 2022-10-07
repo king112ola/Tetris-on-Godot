@@ -10,15 +10,9 @@ func _ready():
 	Globals.connect("notactive",self,"disactive_Block_By_Block") # four different blocks are listening to the notactive signal
 
 func disactive_Block_By_Block(): ## check if the blocks are inactivated
-	
-	if is_Currently_Moving: 
-		
-		get_parent().is_fixed=true
-		is_Currently_Moving=false # make the current block running this function to be not active
-		get_tree().root.get_node("Main").active_block=false
-		
-	
-		check_full_line()
+	pass
+
+	#check_full_line()
 
 
 
@@ -84,7 +78,7 @@ func check_full_line():
 		
 		
 
-	if count==10: # if 10 blocks in a row
+	if count>=1: # if 10 blocks in a row
 		######################################################################
 		var main = get_tree().root.get_node("Main")
 		
@@ -139,7 +133,7 @@ func shift_blocks(blocks):
 		Globals.notactive_Block_Object[i].position.y+=80
 
 func destroy_block():
-	queue_free()
+	pass
 	
 	
 	

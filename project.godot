@@ -22,7 +22,7 @@ _global_script_classes=[ {
 "base": "Shape0",
 "class": "Shape1_view",
 "language": "GDScript",
-"path": "res://Script/Block_view.gd"
+"path": "res://Script/Shape1_view.gd"
 }, {
 "base": "Shape0",
 "class": "Shape2",

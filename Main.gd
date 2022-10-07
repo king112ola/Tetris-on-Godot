@@ -8,6 +8,8 @@ onready var shape5=preload("res://Shape5.tscn")
 onready var shape6=preload("res://Shape6.tscn")
 onready var shape7=preload("res://Shape7.tscn")
 
+#View
+onready var shape1_view=preload("res://Shape1_view.tscn")
 
 
 # check the screen control
@@ -23,8 +25,8 @@ var timeForRight =interval
 var timeForLeft =interval
 var numberOfRandom = 7
 var testShapes = [shape1,shape5]
-#var forseeShape
-#var factorFor_forseeShape = 1441
+var forseeShape
+var factorFor_forseeShape = 1441
 
 func _ready():
 	shapes=[shape1,shape2,shape3,shape4,shape5,shape6,shape7]
@@ -38,15 +40,15 @@ func _on_Timer_timeout():
 		next_num=rnd.randi()%numberOfRandom
 	
 		currentMovingShape=shapes[num].instance()
-		#forseeShape = x.instance()
+		forseeShape = shape1_view.instance()
 		$ShapesArea.add_child(currentMovingShape)
-	#	$ShapesArea2.add_child(forseeShape)
+		$ShapesArea2.add_child(forseeShape)
 		
-	#	factorFor_forseeShape = 1441
+		factorFor_forseeShape = 1441
 		
 		currentMovingShape.position=Vector2(320,80)
-	#	forseeShape.position=Vector2(currentMovingShape.position.x,currentMovingShape.position.y+factorFor_forseeShape)
-		
+		forseeShape.position=Vector2(320,80)
+
 
 		active_block=true
 	else:
@@ -65,10 +67,11 @@ func move_right():
 func move_down():
 	
 	if active_block:
-	#	forseeShape.position=Vector2(currentMovingShape.position.x,currentMovingShape.position.y+factorFor_forseeShape)
+		for i in 50:
+			forseeShape.move_down()
 
 		currentMovingShape.move_down()
-	#	factorFor_forseeShape -=80	
+		factorFor_forseeShape -=80	
 		$Timer.start()
 		
 
@@ -125,3 +128,6 @@ func _on_CanvasLayer_use_move_vector(event):
 				currentMovingShape.rotate_it()    
 			releaseFromDrag = false
 
+
+		
+	
