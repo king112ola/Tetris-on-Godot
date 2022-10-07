@@ -1,0 +1,106 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "Shape0",
+"language": "GDScript",
+"path": "res://Script/Shape0.gd"
+}, {
+"base": "Shape0",
+"class": "Shape1",
+"language": "GDScript",
+"path": "res://Script/Shape1.gd"
+}, {
+"base": "Shape0",
+"class": "Shape1_view",
+"language": "GDScript",
+"path": "res://Script/Block_view.gd"
+}, {
+"base": "Shape0",
+"class": "Shape2",
+"language": "GDScript",
+"path": "res://Script/Shape2.gd"
+}, {
+"base": "Shape0",
+"class": "Shape3",
+"language": "GDScript",
+"path": "res://Script/Shape3.gd"
+}, {
+"base": "Shape0",
+"class": "Shape4",
+"language": "GDScript",
+"path": "res://Script/Shape4.gd"
+}, {
+"base": "Shape0",
+"class": "Shape5",
+"language": "GDScript",
+"path": "res://Script/Shape5.gd"
+}, {
+"base": "Shape0",
+"class": "Shape6",
+"language": "GDScript",
+"path": "res://Script/Shape6.gd"
+}, {
+"base": "Shape0",
+"class": "Shape7",
+"language": "GDScript",
+"path": "res://Script/Shape7.gd"
+}, {
+"base": "TouchScreenButton",
+"class": "SwipeScreenButton",
+"language": "GDScript",
+"path": "res://SwipeControl.gd"
+} ]
+_global_script_class_icons={
+"Shape0": "",
+"Shape1": "",
+"Shape1_view": "",
+"Shape2": "",
+"Shape3": "",
+"Shape4": "",
+"Shape5": "",
+"Shape6": "",
+"Shape7": "",
+"SwipeScreenButton": ""
+}
+
+[application]
+
+config/name="Tetrix"
+run/main_scene="res://Main.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+Globals="*res://Script/Globals.gd"
+
+[display]
+
+window/size/width=1440
+window/size/height=3040
+window/size/test_width=1440
+window/size/test_height=3040
+window/handheld/orientation="portrait"
+window/stretch/mode="2d"
+window/stretch/aspect="keep_width"
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+2d/snapping/use_gpu_pixel_snap=true
+environment/default_environment="res://default_env.tres"

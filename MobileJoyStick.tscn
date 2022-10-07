@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/JoyStick/joyStick.png" type="Texture" id=1]
+[ext_resource path="res://MobileJoyStick.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 230.0
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2( 496, 2598 )
+scale = Vector2( 0.876, 0.876 )
+normal = ExtResource( 1 )
+shape = SubResource( 1 )
+
+[node name="InnerCircle" type="Sprite" parent="."]
+position = Vector2( 721, 2825 )
+scale = Vector2( 0.1835, 0.1835 )
+texture = ExtResource( 1 )
