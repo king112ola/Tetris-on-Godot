@@ -42,13 +42,16 @@ func _on_Timer_timeout():
 		currentMovingShape=shapes[num].instance()
 		forseeShape = shape1_view.instance()
 		$ShapesArea.add_child(currentMovingShape)
+		
+		removeExistingPreviewNode()
+		
 		$ShapesArea2.add_child(forseeShape)
 		
 		factorFor_forseeShape = 1441
 		
 		currentMovingShape.position=Vector2(320,80)
 		forseeShape.position=Vector2(320,80)
-
+		move_Down_Preview()
 
 		active_block=true
 	else:
@@ -67,14 +70,22 @@ func move_right():
 func move_down():
 	
 	if active_block:
-		for i in 50:
-			forseeShape.move_down()
-
+		
 		currentMovingShape.move_down()
 		factorFor_forseeShape -=80	
 		$Timer.start()
 		
+func makePreviewGoLeftOrRight():
+	forseeShape.position=currentMovingShape.position
+	move_Down_Preview()
 
+func removeExistingPreviewNode():
+	for n in ($ShapesArea2.get_children()):
+		$ShapesArea2.remove_child(n)  
+		
+func move_Down_Preview():
+	for i in 50:
+		forseeShape.move_down()
 
 var releaseFromDrag = false
 var start_pos
@@ -84,14 +95,20 @@ func _input(event):
 		
 		if Input.is_action_just_pressed("ui_right"):
 			move_right()
+			makePreviewGoLeftOrRight()
+			
+				
 		if Input.is_action_just_pressed("ui_left"):
 			move_left()
+			makePreviewGoLeftOrRight()
+			
 		if Input.is_action_just_pressed("ui_down"):
 			for i in 50:
 				move_down()    
-			
+			removeExistingPreviewNode()
 		if Input.is_action_just_pressed("ui_up"):
 			currentMovingShape.rotate_it()
+
 
 
 func _on_CanvasLayer_use_move_vector(event):
@@ -103,20 +120,25 @@ func _on_CanvasLayer_use_move_vector(event):
 					timeForRight=interval;
 				if(timeForRight==interval):	
 					move_right()
+					makePreviewGoLeftOrRight()
 					
 				timeForRight-=1;
 				releaseFromDrag = true
+				
 			elif Swipe.get_swipe_direction(event.relative,3.5) == Vector2.LEFT:
 				if(timeForLeft==0):
 					timeForLeft=interval;
 				if(timeForLeft==interval):
 					move_left()
+					makePreviewGoLeftOrRight()
+					
 				timeForLeft-=1;
 				releaseFromDrag = true
 				
 			elif Swipe.get_swipe_direction(event.relative,9) == Vector2.DOWN:
 				for i in 50:
-					move_down()    
+					move_down()  
+				removeExistingPreviewNode()
 				releaseFromDrag = true
 
 				

@@ -63,14 +63,14 @@ func move_down():
 		create_position=position
 	if not is_fixed:
 		for ch in get_children():
-			if not ch.can_move_down(): # if the Shape Node cannot move down
+			if not ch.can_move_down(self): # if the Shape Node cannot move down
 				
 				if create_position==position:
 					
 					Globals.restart_game()
 				
 				return
-
+			
 		position.y+=80
 		
 func move_downForSee():

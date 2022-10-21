@@ -3,7 +3,7 @@ extends Node2D
 var is_Currently_Moving =false
 var EFFECT = preload("res://Explosion.tscn")
 
-
+var shape1_view=preload("res://Shape1_view.tscn")
 
 func _ready():
 	is_Currently_Moving=true
@@ -46,7 +46,7 @@ func is_off_screen(vec) -> bool:
 	else:
 		return false
 
-func can_move_down():
+func can_move_down(node):
 	
 	if Globals.notactive_Position_Vector.has(Vector2(get_parent().position.x+position.x,get_parent().position.y+position.y+80)) or get_parent().position.y+position.y==1520:
 		disactive_Block_By_Block()
