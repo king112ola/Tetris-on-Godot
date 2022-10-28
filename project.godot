@@ -20,11 +20,6 @@ _global_script_classes=[ {
 "path": "res://Script/Shape1.gd"
 }, {
 "base": "Shape0",
-"class": "Shape1_view",
-"language": "GDScript",
-"path": "res://Script/Shape1_view.gd"
-}, {
-"base": "Shape0",
 "class": "Shape2",
 "language": "GDScript",
 "path": "res://Script/Shape2.gd"
@@ -62,7 +57,6 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Shape0": "",
 "Shape1": "",
-"Shape1_view": "",
 "Shape2": "",
 "Shape3": "",
 "Shape4": "",

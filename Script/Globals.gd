@@ -8,6 +8,8 @@ var notactive_Block_Object = []
 var view_notactive_Position_Vector = []
 var view_notactive_Block_Object = []
 var speed = 1
+var current_mov_shape
+var canPreviewRotate = false
 
 func call_For_Remaining_Blocks():
 	emit_signal("notactive") # trigger the singal of the 4 different blocks

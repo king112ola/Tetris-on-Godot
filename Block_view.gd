@@ -9,11 +9,9 @@ func _ready():
 
 
 func can_rotate(val) -> bool:
-
-	if Globals.notactive_Position_Vector.has(Vector2(get_parent().position.x+val.x,get_parent().position.y+val.y)) or is_off_screen(Vector2(get_parent().position.x+val.x,get_parent().position.y+val.y)):
-		return false
-	else:
-		return true
+	if(!Globals.canPreviewRotate): return false
+	
+	return true
 
 func is_off_screen(vec) -> bool:
 	if vec.x<0:

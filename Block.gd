@@ -29,9 +29,13 @@ func disactive_Block_By_Block(): ## check if the blocks are inactivated
 
 func can_rotate(val) -> bool:
 
-	if Globals.notactive_Position_Vector.has(Vector2(get_parent().position.x+val.x,get_parent().position.y+val.y)) or is_off_screen(Vector2(get_parent().position.x+val.x,get_parent().position.y+val.y)):
+	
+
+	if is_off_screen(Vector2(get_parent().position.x+val.x,get_parent().position.y)):
+		Globals.canPreviewRotate = false
 		return false
 	else:
+		Globals.canPreviewRotate = true
 		return true
 
 func is_off_screen(vec) -> bool:

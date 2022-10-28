@@ -37,9 +37,11 @@ func _on_Timer_timeout():
 	
 	if not active_block: ## Generate new blocks if there is no more active block
 		num=rnd.randi()%numberOfRandom if num==-1 else next_num
+		
 		next_num=rnd.randi()%numberOfRandom
 	
 		currentMovingShape=shapes[num].instance()
+		Globals.current_mov_shape = num+1 # index must add 1 to match the shape num
 		forseeShape = shape1_view.instance()
 		$ShapesArea.add_child(currentMovingShape)
 		
@@ -75,7 +77,7 @@ func move_down():
 		factorFor_forseeShape -=80	
 		$Timer.start()
 		
-func makePreviewGoLeftOrRight():
+func makePreviewGoLeftOrRightOrRotate():
 	forseeShape.position=currentMovingShape.position
 	move_Down_Preview()
 
@@ -95,19 +97,22 @@ func _input(event):
 		
 		if Input.is_action_just_pressed("ui_right"):
 			move_right()
-			makePreviewGoLeftOrRight()
+			makePreviewGoLeftOrRightOrRotate()
 			
 				
 		if Input.is_action_just_pressed("ui_left"):
 			move_left()
-			makePreviewGoLeftOrRight()
+			makePreviewGoLeftOrRightOrRotate()
 			
 		if Input.is_action_just_pressed("ui_down"):
 			for i in 50:
 				move_down()    
 			removeExistingPreviewNode()
+			
 		if Input.is_action_just_pressed("ui_up"):
 			currentMovingShape.rotate_it()
+			forseeShape.rotate_it()
+			makePreviewGoLeftOrRightOrRotate()  
 
 
 
@@ -120,7 +125,7 @@ func _on_CanvasLayer_use_move_vector(event):
 					timeForRight=interval;
 				if(timeForRight==interval):	
 					move_right()
-					makePreviewGoLeftOrRight()
+					makePreviewGoLeftOrRightOrRotate()
 					
 				timeForRight-=1;
 				releaseFromDrag = true
@@ -130,7 +135,7 @@ func _on_CanvasLayer_use_move_vector(event):
 					timeForLeft=interval;
 				if(timeForLeft==interval):
 					move_left()
-					makePreviewGoLeftOrRight()
+					makePreviewGoLeftOrRightOrRotate()
 					
 				timeForLeft-=1;
 				releaseFromDrag = true
@@ -147,7 +152,9 @@ func _on_CanvasLayer_use_move_vector(event):
 			print("touch")
 			
 			if not event.is_pressed() and releaseFromDrag == false:
-				currentMovingShape.rotate_it()    
+				currentMovingShape.rotate_it()  
+				forseeShape.rotate_it()
+				makePreviewGoLeftOrRightOrRotate() 
 			releaseFromDrag = false
 
 
