@@ -68,6 +68,7 @@ func move_down():
 				if create_position==position:
 					
 					Globals.restart_game()
+					
 				
 				return
 			

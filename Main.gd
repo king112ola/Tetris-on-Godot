@@ -28,7 +28,9 @@ var testShapes = [shape1,shape5]
 var forseeShape
 var factorFor_forseeShape = 1441
 
+	
 func _ready():
+	
 	shapes=[shape1,shape2,shape3,shape4,shape5,shape6,shape7]
 	rnd.randomize()
 
@@ -160,3 +162,6 @@ func _on_CanvasLayer_use_move_vector(event):
 
 		
 	
+
+
+

@@ -1,0 +1,163 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Fonts/GameF/TrashyRegular-Rp3pl.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Fonts/GameF/3rd/OmbudsmanStencil-jEEGj.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 120
+outline_color = Color( 0.0196078, 0.0156863, 0.0156863, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 68
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="GDScript" id=3]
+
+[node name="Tetris" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+margin_right = 576.0
+margin_bottom = 1024.0
+color = Color( 0.603922, 0.203922, 0.203922, 1 )
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="Title" type="Label" parent="UI"]
+margin_top = 300.0
+margin_right = 576.0
+margin_bottom = 535.0
+custom_fonts/font = SubResource( 1 )
+text = "Tetris
+"
+align = 1
+valign = 1
+
+[node name="MenuButtons" type="Node2D" parent="UI/Title"]
+
+[node name="Start" type="Node2D" parent="UI/Title/MenuButtons"]
+
+[node name="Start Menu" type="VBoxContainer" parent="UI/Title/MenuButtons/Start"]
+margin_top = 150.0
+margin_right = 576.0
+margin_bottom = 450.0
+rect_scale = Vector2( 1, 0.88 )
+custom_constants/separation = 30
+
+[node name="Settings" type="Button" parent="UI/Title/MenuButtons/Start/Start Menu"]
+margin_right = 576.0
+margin_bottom = 8.0
+focus_mode = 0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+enabled_focus_mode = 0
+text = "Settings"
+flat = true
+
+[node name="Play!" type="Button" parent="UI/Title/MenuButtons/Start/Start Menu"]
+margin_top = 38.0
+margin_right = 576.0
+margin_bottom = 46.0
+focus_mode = 0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+enabled_focus_mode = 0
+text = "Play"
+flat = true
+
+[node name="Exit" type="Button" parent="UI/Title/MenuButtons/Start/Start Menu"]
+margin_top = 76.0
+margin_right = 576.0
+margin_bottom = 84.0
+focus_mode = 0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+enabled_focus_mode = 0
+text = "Exit"
+flat = true
+
+[node name="move_tween" type="Tween" parent="UI/Title/MenuButtons/Start"]
+
+[node name="Difficulty" type="Node2D" parent="UI/Title/MenuButtons"]
+position = Vector2( 576, 0 )
+
+[node name="DifficultyMenu" type="VBoxContainer" parent="UI/Title/MenuButtons/Difficulty"]
+margin_top = 150.0
+margin_right = 576.0
+margin_bottom = 450.0
+rect_scale = Vector2( 1, 0.88 )
+custom_constants/separation = 30
+
+[node name="Easy" type="Button" parent="UI/Title/MenuButtons/Difficulty/DifficultyMenu"]
+margin_right = 576.0
+margin_bottom = 8.0
+focus_mode = 0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+enabled_focus_mode = 0
+text = "Easy"
+flat = true
+
+[node name="Medium" type="Button" parent="UI/Title/MenuButtons/Difficulty/DifficultyMenu"]
+margin_top = 38.0
+margin_right = 576.0
+margin_bottom = 46.0
+focus_mode = 0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+enabled_focus_mode = 0
+text = "Medium"
+flat = true
+
+[node name="Hard" type="Button" parent="UI/Title/MenuButtons/Difficulty/DifficultyMenu"]
+margin_top = 76.0
+margin_right = 576.0
+margin_bottom = 84.0
+focus_mode = 0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+enabled_focus_mode = 0
+text = "Hard"
+flat = true
+
+[node name="Back" type="Button" parent="UI/Title/MenuButtons/Difficulty/DifficultyMenu"]
+margin_top = 114.0
+margin_right = 576.0
+margin_bottom = 122.0
+focus_mode = 0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+enabled_focus_mode = 0
+text = "Back"
+flat = true
+
+[node name="move_tween" type="Tween" parent="UI/Title/MenuButtons/Difficulty"]
+
+[node name="Score" type="Node2D" parent="."]
+
+[node name="Buttons" type="Node2D" parent="."]
+
+[node name="Emitters" type="Node2D" parent="."]
+
+[node name="Global" type="Node2D" parent="."]
+script = SubResource( 3 )
+
+[connection signal="pressed" from="UI/Title/MenuButtons/Start/Start Menu/Play!" to="UI/Title/MenuButtons" method="_on_Play_pressed"]
+[connection signal="pressed" from="UI/Title/MenuButtons/Difficulty/DifficultyMenu/Back" to="UI/Title/MenuButtons" method="_on_Back_pressed"]

@@ -15,6 +15,7 @@ func disactive_Block_By_Block(): ## check if the blocks are inactivated
 		
 		get_parent().is_fixed=true
 		is_Currently_Moving=false # make the current block running this function to be not active
+		
 		get_tree().root.get_node("Main").active_block=false
 		
 		Globals.notactive_Position_Vector.append(get_parent().position+position)

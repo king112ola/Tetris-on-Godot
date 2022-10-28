@@ -1,6 +1,8 @@
 extends Node
 
 signal notactive
+const StartMenu = preload("res://StartMenu.tscn")
+const MainScene = preload("res://Main.tscn")
 
 var notactive_Position_Vector = []
 var notactive_Block_Object = []
@@ -20,4 +22,15 @@ func restart_game():
 	notactive_Block_Object.clear()
 	view_notactive_Position_Vector.clear()
 	view_notactive_Block_Object.clear()
+	current_mov_shape = null
+	canPreviewRotate = false
+	
+#	for n in get_tree().get_root().get_children():
+#
+#		if  "Main" ==n.name :
+#			get_tree().get_root().remove_child(n)
+#
+#
+	
 	get_tree().reload_current_scene()
+
